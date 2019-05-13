@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/plant.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/plant2.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/plant3.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/projecile.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/Sans titre.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/tash.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/tashdos.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/tashdroite.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/tashgauche.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/tuiles.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/AnimationMarcheDos.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/AnimationMarcheDroite.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/AnimationMarcheGauche.png</File>
+    <File>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/AnimationMarche.png</File>
+  </SourceFiles>
+</SourceFileCollection>
