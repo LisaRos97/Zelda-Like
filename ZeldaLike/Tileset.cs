@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ZeldaLike
 {
-    class Tileset
+   public class Tileset
     {
         public int Rows { get; set; }
         public int Cols { get; set; }

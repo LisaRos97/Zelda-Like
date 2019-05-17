@@ -47,6 +47,7 @@
     <Compile Include="Sprite.cs" />
     <Compile Include="Tilemap.cs" />
     <Compile Include="Tileset.cs" />
+    <Compile Include="SceneMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.manifest" />

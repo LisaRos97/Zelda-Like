@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ZeldaLike
 {
-    class Sprite
+    public class Sprite
     {
         public float X { get; set; }
         public float Y { get; set; }

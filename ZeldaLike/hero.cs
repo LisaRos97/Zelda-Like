@@ -10,9 +10,14 @@ using System.Threading.Tasks;
 
 namespace ZeldaLike
 {
-	class Hero : Sprite
+	public class Hero : Sprite
 	{
+
+		GraphicsDeviceManager graphics;
+		SpriteBatch spriteBatch;
+
 		public int Direction { get; set; }
+
 		public bool isMovingRight { get; set; }
 		public bool isMoving { get; set; }
 
@@ -28,7 +33,11 @@ namespace ZeldaLike
 		List<Plant> plants = new List<Plant>();
 
 
-		Hero tash;
+
+
+
+
+		public Hero tash;
 		Plant plant;
 
 
@@ -41,7 +50,18 @@ namespace ZeldaLike
 			{
 				return new Rectangle((int)(X + Ox), (int)(Y + Oy + 50), image.Width, image.Height - 50);
 			}
+
 		}
+
+
+		//public void setRect (r Rectangle)
+		//{
+
+		//	Rect = r ;
+
+		//}
+
+
 		public override void Load(ContentManager content)
 		{
 			image = content.Load<Texture2D>("tash");
@@ -80,6 +100,21 @@ namespace ZeldaLike
 			Direction = 8;
 			marcheDos = new Animation("AnimationMarcheDos");
 		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 		public void Update(GameTime gameTime, Tilemap tilemap)
@@ -163,7 +198,7 @@ namespace ZeldaLike
 
 
 			//Collision plante
-
+			Rectangle collisionRect = new Rectangle((int)X + speedX, (int)Y + speedY, 64, 64);
 			if (Direction == 6 || Direction == 2 || Direction == 8 || Direction == 4)
 				// {
 				//	collisionOx += image.Width;
@@ -173,21 +208,26 @@ namespace ZeldaLike
 				// Console.WriteLine(nextTileRow);
 				// Console.WriteLine(nextTileCol);
 				// tile = tilemap.Data[nextTileRow][nextTileCol];
-				nextTileCol = (int)Math.Floor((collisionOx + speedX) / (float)tilemap.Tileset.Tilesize);
-			nextTileRow = (int)Math.Floor((collisionOy + speedY) / (float)tilemap.Tileset.Tilesize);
-			Console.WriteLine(nextTileRow);
-			Console.WriteLine(nextTileCol);
-			tile = tilemap.Data[nextTileRow][nextTileCol];
+				//nextTileCol = (int)Math.Floor((collisionOx + speedX) / (float)tilemap.Tileset.Tilesize);
+			//nextTileRow = (int)Math.Floor((collisionOy + speedY) / (float)tilemap.Tileset.Tilesize);
+			//Console.WriteLine(nextTileRow);
+			//Console.WriteLine(nextTileCol);
+			//tile = tilemap.Data[nextTileRow][nextTileCol];
+
 
 			foreach (var c in plants)
 			{
-				{
-					if (tash.Rect.Intersects(plant.Rect))
+					if (collisionRect.Intersects(plant.Rect))
 
 					{
 						CollisionPlante = true;
 					}
+					else
+					{
+						CollisionPlante = false;
+
 				}
+
 			}
 
 		

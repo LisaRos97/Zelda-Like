@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ZeldaLike
 {
-    class Tilemap
+   public class Tilemap
     {
         public Tileset Tileset
         {
