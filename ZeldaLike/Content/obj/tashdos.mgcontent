@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/tashdos.png</SourceFile>
+  <SourceFile>/home/lisa/Projects/ZeldaLikeV6/ZeldaLike/Content/tashdos.png</SourceFile>
   <SourceTime>2019-04-09T14:51:28+02:00</SourceTime>
-  <DestFile>/home/lisa/Projects/ZeldaLikeV3/ZeldaLike/Content/bin/tashdos.xnb</DestFile>
-  <DestTime>2019-05-07T17:44:48.393008+02:00</DestTime>
+  <DestFile>/home/lisa/Projects/ZeldaLikeV6/ZeldaLike/Content/bin/tashdos.xnb</DestFile>
+  <DestTime>2019-05-18T16:41:04.858447+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2019-05-02T10:02:46.332928+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

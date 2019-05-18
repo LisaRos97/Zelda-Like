@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ZeldaLike
 {
-    class Plant : Sprite
+   public class Plant : Sprite
     {
         Texture2D image1;
         Texture2D image2;

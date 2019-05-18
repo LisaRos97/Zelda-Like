@@ -30,7 +30,7 @@ namespace ZeldaLike
 		Animation marche;
 		Animation marcheGauche;
 		Animation marcheDos;
-		List<Plant> plants = new List<Plant>();
+		List<Plant> plants; 
 
 
 
@@ -54,13 +54,30 @@ namespace ZeldaLike
 		}
 
 
-		//public void setRect (r Rectangle)
-		//{
 
-		//	Rect = r ;
 
-		//}
 
+
+		public Hero(int x, int y, string path, List<Plant>plants) : base(x, y, path)
+		{
+			Visible = true;
+			Direction = 6;
+			marcheDroite = new Animation("AnimationMarcheDroite");
+
+			Visible = true;
+			Direction = 2;
+			marche = new Animation("AnimationMarche");
+
+			Visible = true;
+			Direction = 4;
+			marcheGauche = new Animation("AnimationMarcheGauche");
+
+			Visible = true;
+			Direction = 8;
+			marcheDos = new Animation("AnimationMarcheDos");
+
+			this.plants = plants;
+		}
 
 		public override void Load(ContentManager content)
 		{
@@ -78,43 +95,6 @@ namespace ZeldaLike
 
 
 		}
-
-
-
-
-		public Hero(int x, int y, string path) : base(x, y, path)
-		{
-			Visible = true;
-			Direction = 6;
-			marcheDroite = new Animation("AnimationMarcheDroite");
-
-			Visible = true;
-			Direction = 2;
-			marche = new Animation("AnimationMarche");
-
-			Visible = true;
-			Direction = 4;
-			marcheGauche = new Animation("AnimationMarcheGauche");
-
-			Visible = true;
-			Direction = 8;
-			marcheDos = new Animation("AnimationMarcheDos");
-		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 		public void Update(GameTime gameTime, Tilemap tilemap)
@@ -199,20 +179,6 @@ namespace ZeldaLike
 
 			//Collision plante
 			Rectangle collisionRect = new Rectangle((int)X + speedX, (int)Y + speedY, 64, 64);
-			if (Direction == 6 || Direction == 2 || Direction == 8 || Direction == 4)
-				// {
-				//	collisionOx += image.Width;
-				// collisionOy += image.Height - 39;
-				//}
-
-				// Console.WriteLine(nextTileRow);
-				// Console.WriteLine(nextTileCol);
-				// tile = tilemap.Data[nextTileRow][nextTileCol];
-				//nextTileCol = (int)Math.Floor((collisionOx + speedX) / (float)tilemap.Tileset.Tilesize);
-			//nextTileRow = (int)Math.Floor((collisionOy + speedY) / (float)tilemap.Tileset.Tilesize);
-			//Console.WriteLine(nextTileRow);
-			//Console.WriteLine(nextTileCol);
-			//tile = tilemap.Data[nextTileRow][nextTileCol];
 
 
 			foreach (var c in plants)
@@ -222,11 +188,7 @@ namespace ZeldaLike
 					{
 						CollisionPlante = true;
 					}
-					else
-					{
-						CollisionPlante = false;
-
-				}
+					
 
 			}
 
@@ -302,27 +264,6 @@ namespace ZeldaLike
 				isMoving = false;
 
 			}
-
-			//if (isMoving == false)
-			//{
-			//	image = image2;
-			//}
-
-			//if (Keyboard.GetState().IsKeyDown(Keys.Down))
-			//{
-			//	isMoving = true;
-			//}
-			//	if (Keyboard.GetState().IsKeyUp(Keys.Down))
-			//{
-			//		isMoving = false;
-			//}
-
-			//if (isMoving == false)
-			//{
-			//	image = image1;
-			//	}
-
-
 
 		}
 

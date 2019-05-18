@@ -16,7 +16,7 @@ namespace ZeldaLike
         Hero tash;
 		Plant plant;
         List<Projectile> projectiles = new List<Projectile>();
-		 List<Plant> plants = new List<Plant>();
+		public List<Plant> plants = new List<Plant>();
 
         float cooldownCounter = 0;
        
@@ -70,7 +70,7 @@ namespace ZeldaLike
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            tash = new ZeldaLike.Hero(100, 200, "hero");
+            tash = new ZeldaLike.Hero(100, 200, "hero", plants);
 
             plant = new ZeldaLike.Plant(200, 100, "plant");
 
