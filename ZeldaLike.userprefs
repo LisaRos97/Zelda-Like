@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{0312FC0D-5C2F-4FA6-B72B-D9E7487C4CE9}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ZeldaLike/hero.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ZeldaLike/Game1.cs">
     <Files>
-      <File FileName="ZeldaLike/Game1.cs" Line="48" Column="3" />
+      <File FileName="ZeldaLike/Game1.cs" Line="87" Column="3" />
       <File FileName="ZeldaLike/hero.cs" Line="155" Column="5" />
       <File FileName="ZeldaLike/Sprite.cs" Line="1" Column="1" />
     </Files>
