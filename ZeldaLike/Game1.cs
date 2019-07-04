@@ -18,15 +18,21 @@ namespace ZeldaLike
         List<Projectile> projectiles = new List<Projectile>();
 		public List<Plant> plants = new List<Plant>();
 
-        float cooldownCounter = 0;
+		Scene currentScene;
+		SceneGameOver gameover;
+		SceneMap jeu;
+
+		Tileset tileset;
+		Tilemap tilemap;
+
+
+		float cooldownCounter = 0;
        
         const float COOLDOWN = 0.2f;
         const float PLANTGROW = 0.2f;
 
 
-        Tileset tileset;
-        Tilemap tilemap;
-
+		bool GWasPushed = false;
         
 
         int[][] tilemapData = new int[][]
@@ -70,19 +76,35 @@ namespace ZeldaLike
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            tash = new ZeldaLike.Hero(100, 200, "hero", plants);
+            tash = new Hero(100, 200, "tash", plants);
 
-            plant = new ZeldaLike.Plant(200, 100, "plant");
-
-             animation = new ZeldaLike.Animation("MarcheDroite");
-           //  animation.X = 300;
-          //  animation.Y = 300;
+            plant = new Plant(200, 100, "plant");
 
             tileset = new Tileset(1, 3, 40, "tuiles");
             tilemap = new Tilemap(tileset, tilemapData);     
 
+			gameover = new SceneGameOver();
+			jeu = new SceneMap(tilemapData, "tuiles", (a) => ChangeScene(a) );
+			currentScene = jeu;
+
             base.Initialize();
         }
+
+
+		  public void SceneToGameOver()
+		{
+			gameover.Load(Content, this);
+			currentScene = gameover;
+		}
+
+		void ChangeScene(Scene scene)
+		{
+			if (scene != null)
+			{
+				scene.Load(Content, this);
+				currentScene = scene;
+			}
+		}
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
@@ -90,13 +112,17 @@ namespace ZeldaLike
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+          spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            tilemap.Load(Content);
-            tash.Load(Content);
-            plant.Load(Content);
-            animation.Load(Content);
+			currentScene.Load(Content, this);
+
+			// Create a new SpriteBatch, which can be used to draw textures.
+           // spriteBatch = new SpriteBatch(GraphicsDevice);
+
+           // tilemap.Load(Content);
+           // tash.Load(Content);
+            // plant.Load(Content);
+          //  animation.Load(Content);
 
             // TODO: use this.Content to load your game content here
         }
@@ -110,95 +136,77 @@ namespace ZeldaLike
             // TODO: Unload any non ContentManager content here
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
+		/// <summary>
+		/// Allows the game to run logic such as updating the world,
+		/// checking for collisions, gathering input, and playing audio.
+		/// </summary>
+		/// <param name="gameTime">Provides a snapshot of timing values.</param>
+		protected override void Update(GameTime gameTime)
 
 
-        {
-          
+		{
 
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            // TODO: Add your update logic here
-            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            cooldownCounter += dt;
-            tash.Update(gameTime, tilemap);
-            plant.Update(gameTime);
-            animation.Update(gameTime);
-
-
-
-            // Priojectiles
-            // ======================================================
-            KeyboardState ks = Keyboard.GetState();
-            if (ks.IsKeyDown(Keys.Space) && cooldownCounter > COOLDOWN)
-            {
-                Projectile projectile = new Projectile(tash);
-                projectile.Load(Content);
-                projectile.Visible = true;
-                projectiles.Add(projectile);
-                cooldownCounter = 0;
-
-
-            }
-
-            foreach (Projectile p in projectiles)
-            {
-                p.Update(gameTime);
-            }
-
-			if (ks.IsKeyDown(Keys.P)&& cooldownCounter > COOLDOWN)
+			if (Keyboard.GetState().IsKeyDown(Keys.G))
 			{
-				Plant plant = new Plant(tash);
-				plant.Load(Content);
-				plant.Visible = true;
-				plants.Add(plant);
-				cooldownCounter = 0;
+				if (!GWasPushed)
+				{
+					if (currentScene == gameover)
+					{
+						currentScene = jeu;
+					}
 
-
+					else
+					{
+						SceneToGameOver();
+					}
+				}
+				GWasPushed = true;
+			}
+			else
+			{
+				GWasPushed = false;
 			}
 
-			foreach (Plant c in plants)
-			{
-				c.Update(gameTime);
-			}
+			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+				Exit();
+
+			currentScene.Update(gameTime);
+
+			base.Update(gameTime);
+
+		}
 
             // intersections avec les plantes
             // ==============================================================
 
-            direction = tash.Direction;
+           // direction = tash.Direction;
 
-            if (tash.Rect.Intersects(plant.Rect))
-            {
-                if (direction == 6)
-                    {
-                    tash.X = tash.X -3;
-                        }
-                if (direction == 2)
-                {
-                    tash.Y = tash.Y - 3;
-                }
-                if (direction == 4)
-                {
-                    tash.X = tash.X + 3;
-                }
-                if (direction == 8)
-                {
+          //  if (tash.Rect.Intersects(plant.Rect))
+         //   {
+               // if (direction == 6)
+                  //  {
+                  //  tash.X = tash.X -3;
+                       // }
+               // if (direction == 2)
+              //  {
+               //     tash.Y = tash.Y - 3;
+                //}
+                //if (direction == 4)
+               // {
+                   // tash.X = tash.X + 3;
+               // }
+                //if (direction == 8)
+                //{
                   // if (tash.Y + 64 <= plant.Y && tash.Y + 64 >= plant.Y + 40)
                    // {
-                        tash.Y = tash.Y + 3;
+                    //    tash.Y = tash.Y + 3;
                   //  }
-                }
-            }
+               // }
+            //}
             //===============================================================
 
-        }
+       // }
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -206,32 +214,13 @@ namespace ZeldaLike
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
+			spriteBatch.Begin();
 
-            // TODO: Add your drawing code here
+			currentScene.Draw(gameTime, spriteBatch);
 
-
-            spriteBatch.Begin();
-            tilemap.Draw(gameTime, spriteBatch);
-            // plant.Draw(gameTime, spriteBatch);
-            tash.Draw(gameTime, spriteBatch);
-          //  animation.Draw(gameTime, spriteBatch);
-
-            foreach (Projectile p in projectiles)
-            {
-                p.Draw(gameTime, spriteBatch);
-            }
-
-			 foreach (Plant c in plants)
-			{
-				c.Draw(gameTime, spriteBatch);
-			}
-
-           
-
-            spriteBatch.End();
-
-            base.Draw(gameTime);
+			spriteBatch.End();
+			base.Draw(gameTime);
 
         }
     

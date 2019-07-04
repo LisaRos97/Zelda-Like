@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>/home/lisa/Projects/Zelda-Like/ZeldaLike/Content/tuiles.png</SourceFile>
+  <SourceFile>/home/lisa/Projects/ZeldaLikeV7/ZeldaLike/Content/tuiles.png</SourceFile>
   <SourceTime>2019-04-10T16:33:16+02:00</SourceTime>
-  <DestFile>/home/lisa/Projects/Zelda-Like/ZeldaLike/Content/bin/DesktopGL/tuiles.xnb</DestFile>
-  <DestTime>2019-06-24T14:38:18.165033+02:00</DestTime>
+  <DestFile>/home/lisa/Projects/ZeldaLikeV7/ZeldaLike/Content/bin/DesktopGL/tuiles.xnb</DestFile>
+  <DestTime>2019-05-18T17:51:28.576457+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2019-05-02T10:02:46.332928+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -75,7 +75,7 @@ namespace ZeldaLike
           image = content.Load<Texture2D>(path);
         }
 
-        public void Draw (GameTime gametime, SpriteBatch spriteBatch)
+        public virtual void Draw (GameTime gameTime, SpriteBatch spriteBatch)
         {
             if (Visible)
             {

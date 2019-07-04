@@ -41,7 +41,7 @@ namespace ZeldaLike
         }
 
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+		public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             if (Visible)
             {
